@@ -1,0 +1,33 @@
+<html>
+<head></head>
+<body>
+<h1>Nombre de projets </h1>
+{% if p %}
+    {{ p | length }}
+{% endif %}
+<table border="1">
+    <tr>
+        <th> Nom Projet</th>
+        <th> Durée du projet</th>
+        <th>Temps Allouée</th>
+        <th> Les membres</th>
+    </tr>
+    {% for foo in p %}
+        <tr>
+            <td><a href="{% url 'detail' foo.id %}">{{ foo.nom_projet }}</a></td>
+            <td>{{ foo.duree_projet }}</td>
+            <td>{{ foo.temps_alloue }}</td>
+            <td>
+                <ul>
+                {% for m in foo.membres.all %}
+                   (#  m in foo.all_members  #)
+                        <li>{{ m }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+
+</table>
+</body>
+</html>

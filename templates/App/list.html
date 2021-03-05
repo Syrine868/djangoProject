@@ -1,0 +1,16 @@
+<html>
+<head>
+
+</head>
+<body>
+<h1>La liste des projets</h1>
+{% for foo in p %}
+    <ul>
+    <li>Nom du projet : {{ foo.nom_projet }} </li>
+    <li>Durée du projet : {{ foo.duree_projet }} </li>
+    <li> <a href="{% url 'D' foo.id %}">Details</a></li>
+</ul>
+    {% empty %} <h1>Aucun projet </h1>
+{%  endfor %}
+</body>
+</html>

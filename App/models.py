@@ -23,8 +23,6 @@ class Etudiant(User):
     group = models.CharField(max_length=30)
 
 
-
-
 class Coach(User):
     def __str__(self):
         return f'{self.nom} {self.email}'
@@ -63,7 +61,8 @@ class Projet(models.Model):
         list_member = MemberShipInProject.objects.filter(projet=self.pk)
         sum_allocated = list_member.all().aggregate(Sum('time_allocated_by_member'))
         return sum_allocated['time_allocated_by_member__sum'] or 0
-
+    def all_members(self):
+        return self.membres.all()
 
 class MemberShipInProject(models.Model):
     projet = models.ForeignKey(Projet, on_delete=models.CASCADE)
