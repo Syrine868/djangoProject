@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+</head>
+<body>
+{% block header %}
+<ul>
+<li><a href="accueil.html">Accueil</a></li>
+<li><a href="{% url 'liste' %}">Liste</a></li>
+<li><a href="{% url 'login' %}">Login</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+    <h1>Page d'accueil</h1>
+{% endblock %}
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+</body>
+</html>
